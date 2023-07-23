@@ -6,76 +6,51 @@
 Придумайте свою тему, подключите набор изображений и проводите дни и ночи за экраном, стараясь удержать в памяти эти картинки! Подойдут любые карточки, на которых изображены однотипные предметы. При этом недопустимо, чтобы изображения разных предметов были похожи друг на друга или походили на что-то другое.
 
 
+## Задача
+Вам нужно запрограммировать версию для одного игрока популярной игры на развитие памяти и внимания. Мы уже подготовили вёрстку и графику. Используйте React для декларативного создания интерфейса игры.
 
+##Приложение состоит из трех экранов: начальный экран, экран игры и экран результатов.
 
+После загрузки страницы пользователь видит начальный экран. Начальный экран отображает правила игры и позволяет выбрать тему изображений на карточках.
+Экран игры отображает поле с карточками и текущую статистику игры (количество открытых карточек и затраченное число ходов).
+Экран результатов отображает таблицу с результатами игр пользователей.
+##Начальный экран
+При клике на кнопку выбора темы изображений пользователь переходит к экрану игры с выбранным комплектом карточек.
+Для тренировки есть наборы «цветы», «котики» и «машины».
+При каждом старте игры набор карточек перемешивается в случайном порядке.
+##Экран игры
+При старте игры пользователь видит все карточки рубашками вверх. Изображение на рубашке карточек соответствует выбранной теме.
+Пользователь переворачивает карточку кликом.
+Можно выбрать любую карточку в произвольном порядке. Для завершения хода пользователь выбирает вторую закрытую карточку. Повторный клик по открытой карточке игнорируется.
+Приложение проверяет открытую пару карточек, и если изображения на лицевой стороне карточек не совпадают, то обе карточки переворачиваются рубашкой вверх после короткой задержки, заданной в настройках приложения.
+Если изображения открытой пары совпадают, то карточки отображаются на поле лицевой стороной и далее в игре не участвуют. Такие карточки выделяются стилями.
+При выборе третьей карточки обе открытые карточки закрываются, третья карточка не открывается.
+Приложение показывает текущее количество переворотов пар карточек (ходов) и количество пар карточек, которые правильно собраны, во время игры.
+На экране показан индикатор прогресса игры. Содержимое индикатора закрашивается в ходе игры. Закрашенная часть индикатора пропорциональна доле собранных пар.
+Можно сделать не ограниченное количество ходов (переворотов пар карточек) за игру.
+Когда все карточки собраны в пары, пользователь видит модальное окно (popup) с сообщением об окончании игры и кнопкой перехода к экрану результатов. Переход к следующему экрану происходит после нажатия на кнопку.
+##Экран результатов
+Результаты игры других пользователей поступают из внешнего источника данных (файла).
+Результаты в таблице отсортированы по возрастанию количества ходов.
+Результат текущей игры отображается в строке «Ваш результат».
+Строки, в которых результат совпадает с текущим, выделены стилями.
+Экран результатов содержит кнопку начала новой игры. при нажатии на кнопку пользователь переходит к начальному экрану.
+При переходе к начальному экрану текущий результат сбрасывается.
+Приложение правильно склоняет числительные («1 шаг», «2 шага», «5 шагов»).
 
-# Getting Started with Create React App
+##Технические требования
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Для получения корректного склонения числительных используйте библиотеку `@dubaua/get-declension`.
+Код приложения пишите в теге `<script>` файла `index.html` для возможности локального запуска из файловой системы, без использования сервера сборки.
+Переход между экранами приложения происходит без перезагрузки страницы.
+В разметке приложения может находиться только корневой элемент (`#root`). Вся разметка интерфейса должна генерироваться из JS.
+При отключенном в браузере JS пользователь видит сообщение «You need to enable JavaScript to run this app.».
+Готовая разметка шаблонов передается разработчику в HTML-файлах. Вам нужно самостоятельно перенести разметку шаблонов в JSX-компоненты.
+Разработчик получает готовые стили и графику приложения.
+Стили и разметку изменять нельзя!
+Используйте в проекте синтаксис стандарта `ES6`.
+Для добавления обработчиков события используйте только механизмы React. Использование методов `addEventListener` и `querySelector` не допускается!
+Код для генерации случайного набора изображений карточек должен быть оформлен в функцию в файле `data.js`.
+Для удобной отладки приложения в файле настроек игры `settings.js` можно отключить перемешивание карточек.
+Задержку обратного переворачивания карточек `TIMEOUT` установите в файле настроек.
+Приложение сравнивает изображения по их `url`, который указан в данных в файле `data.js.`
