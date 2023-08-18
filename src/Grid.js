@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from './Card.js';
-import TIMEOUT from './utils/settings.js';
+import {TIMEOUT} from './utils/settings.js';
 
 
 function Grid({images = [], finishedItems, checkItems}) {

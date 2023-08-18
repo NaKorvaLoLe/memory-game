@@ -32,7 +32,7 @@ body {
   font-size: 20px;
   line-height: 28px;
   color: #333333;
-  background: url("../img/clouds.svg") no-repeat top 40px center,
+  background: url("../../public/img/clouds.svg") no-repeat top 40px center,
     linear-gradient(180deg, #c2e5fe 0%, #ffffff 50%) no-repeat;
 }
 
@@ -114,8 +114,16 @@ body {
 
   perspective: 1000px; /* Для анимации */
 
-  --theme-back: url("../img/back-cats.svg");
+  --theme-back: url("../../public/img/back-cats.svg");
 }
+
+/* .cards-theme-flowers {
+  --theme-back: url("../../public/img/back-flowers.svg");
+}
+
+.cards-theme-cars {
+  --theme-back: url("../../public/img/back-cars.svg");
+} */
 
 .card {
   display: grid;
@@ -162,7 +170,7 @@ body {
   height: 144px;
   border-radius: 5px;
   background-color: rgba(140, 174, 200, 0.6);
-  background-image: url("../img/check.svg");
+  background-image: url("../../public/img/check.svg");
   background-repeat: no-repeat;
   background-position: center;
   opacity: 0;
@@ -245,7 +253,7 @@ body {
   left: -30px;
   width: 376px;
   height: 130px;
-  background-image: url("../img/ribbon-with-stars.svg");
+  background-image: url("../../public/img/ribbon-with-stars.svg");
   background-position: top center;
   background-repeat: no-repeat;
 }
@@ -266,4 +274,70 @@ body {
 
 .modal .button {
   width: 100%;
+}
+
+.result {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.result h2 {
+  margin: 0;
+  margin-bottom: 12px;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 56px;
+}
+
+.result p {
+  margin: 0;
+  margin-bottom: 24px;
+}
+
+.result-table {
+  width: 520px;
+  margin: 36px auto 32px;
+  font-size: 16px;
+  line-height: 22px;
+  background-color: #ffffff;
+  box-shadow: 0 5px 20px rgba(140, 174, 200, 0.25);
+  border-radius: 10px;
+  border-collapse: collapse;
+}
+
+.result-table-row {
+  display: grid;
+  grid-template-columns: 120px 260px 140px;
+  align-items: center;
+}
+
+.result-table-row th {
+  padding: 18px 32px 8px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #8caec8;
+  text-align: left;
+}
+
+.result-table-row td {
+  padding: 8px 32px;
+  text-align: left;
+}
+
+.result-table tbody tr:last-child {
+  padding-bottom: 10px;
+}
+
+/* Выделение строки таблицы */
+
+.result-table-row.active {
+  font-weight: 900;
+  color: #ffffff;
+  background-color: #00ca51;
+}
+
+.result .button {
+  width: 160px;
 }

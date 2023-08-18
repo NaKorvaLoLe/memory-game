@@ -1,69 +1,47 @@
 import React from 'react';
-import Progress from './Progress.js';
-import Modal from './Modal.js';
-import Grid from './Grid.js';
+import GamePage from './GamePage';
+import ResultsPage from './ResultsPage';
+import {AppRoute} from './utils/settings.js'
 
-const useGame = (images) => {
-  const [finishedItems, setFinishedItems] = React.useState([]);
-  const [stepsCount, setStepsCount] = React.useState(0)
+
+function App({images = [], results = []}) {
+  // TODO: добавьте состояние для хранения текущего результата
+  const [result, setResult] = React.useState(0)
+  // TODO: добавьте состояние для хранения страницы приложения
+  const [page, setPage] = React.useState(AppRoute.Game);
   
-  const checkItems = (firstItem, secondItem) =>{
-    const firstWord = images.find(({id}) => id === firstItem);
-    const secondWord = images.find(({id}) => id === secondItem);
-    if(firstWord.url === secondWord.url){
-      setFinishedItems((items) => [...items, firstItem, secondItem]);
-    }
-    setStepsCount((i) => i + 1);
+  const showResults = (wordsCount) => {
+    setResult(wordsCount)
+    setPage(AppRoute.Results)
   }
 
   const handleReset = () => {
-    setFinishedItems([]);
-    setStepsCount(0);
+    setPage(AppRoute.Game)
+  }
+  const getPage = (route) => {
+    switch (route) {
+      case AppRoute.Game:
+        return (
+          <GamePage 
+            images={images} 
+            onShowResults={showResults}
+          />
+        );
+      case AppRoute.Results:
+        return (
+          <ResultsPage 
+            results = {results} 
+            current = {result} 
+            onResetGame={handleReset} 
+          />
+        );
+      default:
+        return null  
+    }
   }
 
-  const isWin = finishedItems.length > 0 && finishedItems.length === images.length;
 
-  
-  return {
-    finishedItems,
-    handleReset,
-    stepsCount,
-    checkItems,
-    isWin,
-  }
-}
-
-function App({images = []}) {
-  // TODO: добавьте состояние для счётчика шагов
-  const  {
-    finishedItems,
-    checkItems,
-    stepsCount,
-    handleReset,
-    isWin,
-  } = useGame(images)
-
-  return (
-    <section className="game container">
-      <Progress 
-        value={finishedItems.length/2} 
-        max={images.length/2} 
-      />
-      <div className="steps">Шаг {stepsCount}</div>
-      <Grid 
-        images={images}
-        finishedItems={finishedItems}
-        checkItems={checkItems}
-      />
-      {isWin && (
-        <Modal>
-          <h3 className="modal-caption">Победа!</h3>
-          <p className="modal-description">Вы собрали все пары за {stepsCount} шагов</p>
-          <button onClick={handleReset} className="button modal-button" type="button">Новая игра</button>
-        </Modal>
-      )}
-    </section>
-  );
+  return getPage(page)
 }
 
 export default App;
